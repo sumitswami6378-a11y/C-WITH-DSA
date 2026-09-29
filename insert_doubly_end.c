@@ -1,0 +1,68 @@
+#include<stdio.h>
+#include<stdlib.h>
+struct node{
+int data;
+struct node *next ;
+struct node *prev ;
+
+
+};
+int main(){
+int n,i ;
+struct node *new,*temp,*last;
+struct node*head = NULL ;
+printf("ENTER THE NUMBER OF NODES = ");
+scanf("%d",&n);
+
+for(i=1 ; i<=n ; i++){
+new = (struct node*)malloc(sizeof(struct node));
+printf("ENTER THE DATA OF %d NODE = ",i);
+scanf("%d",&new->data);
+new->prev = head ;
+new->next = NULL ;
+
+if(head == NULL){
+  
+    head = new ;
+    //new->next = NULL ;
+    last = new ;
+
+}
+else{
+
+    last->next = new ;
+    new->next = NULL ;
+    last = new ;
+
+}
+
+}
+
+printf("<-----------------BEFORE INSERTION-------------------------->");
+temp = head ;
+while(temp != NULL){
+
+    printf("%d",temp->data);
+    temp = temp->next ;
+}
+
+new = (struct node*)malloc(sizeof(struct node));
+printf("ENTER THE DATA OF THE INSERTIING NODE = ");
+scanf("%d--",&new->data);
+
+new->prev =last;
+new->next = NULL ;
+last = new ;
+
+printf("<--------------------AFTER INSERTING------------------------->");
+temp = head ;
+
+while(temp != NULL){
+
+    printf("%d<-->",temp->data);
+    temp = temp->next ;
+}
+printf("NULL");
+
+    return 0;
+}
